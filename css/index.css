@@ -1,0 +1,62 @@
+.banner-container{
+    background-image: url("../img/intro-bg_1.jpg");
+    background-attachment: fixed;  /*vvi*/
+    background-size: cover;  /*vvi*/
+    height: 630px;
+}
+
+.banner-content{
+    color: white;
+    text-align: center;
+    margin-top: 200px;
+    margin-left: 425px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-left: 201px;
+    padding-right: 213px;
+    position: absolute;
+    justify-content: center;
+    background-color: rgb(0,0,0,0.6);
+}
+
+.rounded-items{
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-name{
+    margin-top: 12px;
+    text-align: center;
+}
+
+.rounded-products{
+    /* border: 2px solid black;
+    border-radius: 50%;
+    padding: 0px; */
+    margin: 10px;
+}
+
+.banner-content a{
+    background-color: red;
+    text-decoration: none;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+}
+
+.banner-content a:hover{
+    background-color: rgb(206, 24, 24);
+}
+
+.link{
+    margin-top: 28px;
+}
+
+#shirt img{
+    height: 40px;
+    width: 40px;
+}
