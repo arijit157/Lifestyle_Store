@@ -29,8 +29,6 @@ $user_record=mysqli_fetch_assoc($result);
 $_SESSION['user_id']=$user_record['id'];
 $_SESSION['user_email']=$user_record['email'];
 $_SESSION['user_name']=$user_record['name'];
-
-echo "Login successfull! 😊";
 header("location: ../index.php");
 mysqli_close($conn);
 ?>
