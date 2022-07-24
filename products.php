@@ -164,7 +164,7 @@ $interested_products = mysqli_fetch_all($result3, MYSQLI_ASSOC);
                                 ?>
                             <div class="star-container" title="<?= $ratings ?>">
                                 <?php
-                                for ($i = 0; $i > 5; $i++) {
+                                for ($i = 0; $i < 5; $i++) {
                                     if ($ratings >= $i + 0.8) {
                                 ?>
                                         <i class="fa-solid fa-star"></i>
