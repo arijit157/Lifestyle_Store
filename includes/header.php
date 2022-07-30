@@ -37,3 +37,5 @@
             </div>
         </div>
     </nav>
+
+    <div id="loading"></div>
