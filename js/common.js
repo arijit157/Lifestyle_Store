@@ -26,3 +26,35 @@ window.addEventListener("load", function(){
     })
 })
 
+let signup_success=(event)=>{
+    document.getElementById("loading").style.display="none";
+    let response=JSON.parse(event.target.responseText);
+    if(response.success)
+    {
+        alert(response.message);
+        window.location.href="index.php";
+    }
+    else
+    {
+        alert("Something went wrong!");
+    }
+}
+
+let login_success=(event)=>{
+    document.getElementById("loading").style.display="none";
+    let response=JSON.parse(event.target.responseText);
+    if(response.success)
+    {
+        alert(response.message);
+        location.reload();
+    }
+    else
+    {
+        alert("Something went wrong");
+    }
+};
+
+let on_error=()=>{
+    document.getElementById("loading").style.display="none";
+    alert("Something wrent wrong!");
+};

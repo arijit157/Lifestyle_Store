@@ -13,25 +13,28 @@ $sql="select * from users where email='$email'";
 $result=mysqli_query($conn, $sql);
 if(!$result)
 {
-    echo "Something went wrong";
+    $response=array('success'=> false, 'message'=> "Cannot signup at this moment");
+    echo json_encode($response);
     return;
 }
 $row_count=mysqli_num_rows($result);
 if($row_count!=0)
 {
-    echo "This email address is already registered with us";
+    $response=array('success' => false, 'message' => "This email address is already registered with us");
+    echo json_encode($response);
     return;
 }
 $sql="insert into users(name, email, password, mobile, address, pin_code) values('$full_name', '$email', '$password', '$mobile', '$address', '$pin_code')";
 $result=mysqli_query($conn, $sql);
 if(!$result)
 {
-    echo "Something went wrong";
-    return;
+    $response=array('success' => false, 'message' => "Something went wrong!");
+    echo json_encode($response);
 }
-echo "Your account has been created successfully!";
+$response=array('success' => true, 'message' => "Your account has been created successfully");
+echo json_encode($response);
 ?>
-Click<a href="../index.php">here</a>to continue
+
 <?php
 mysqli_close($conn); 
 // header("Location: ../index.php");
