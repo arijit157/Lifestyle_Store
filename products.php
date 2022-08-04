@@ -154,7 +154,7 @@ $interested_products = mysqli_fetch_all($result3, MYSQLI_ASSOC);
             foreach ($products as $product) {
                 $product_images = glob("img/products/" . $product['id'] . "/*");
             ?>
-                <div class="card" style="width: 18rem;" id="my-shirt-card1">
+                <div class="card product-id-<?=$product['id']?>" style="width: 18rem;" id="my-shirt-card1">
                     <img src="<?php echo $product_images[0]; ?>" class="card-img-top" alt="<?= $product_category ?>_img">
                     <div class="card-body">
                         <h5 class="card-title"><?= $product['name'] ?></h5>
@@ -196,11 +196,11 @@ $interested_products = mysqli_fetch_all($result3, MYSQLI_ASSOC);
                             //}
                                 if ($interested_users_status) {
                                 ?>
-                                    <i class="fa-solid fa-heart"></i>
+                                    <i class="is-interested-image fa-solid fa-heart" product_id="<?php echo $product['id']?>"></i>
                                 <?php
                                 } else {
                                 ?>
-                                    <i class="fa-regular fa-heart"></i>
+                                    <i class=" is-interested-image fa-regular fa-heart" product_id="<?=$product['id']?>"></i>
                                 <?php
                                 }
                                 ?>
