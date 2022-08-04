@@ -154,14 +154,14 @@ $interested_products = mysqli_fetch_all($result3, MYSQLI_ASSOC);
             foreach ($products as $product) {
                 $product_images = glob("img/products/" . $product['id'] . "/*");
             ?>
-                <div class="card product-id-<?=$product['id']?>" style="width: 18rem;" id="my-shirt-card1">
+                <div class="card product-id-<?= $product['id'] ?>" style="width: 18rem;" id="my-shirt-card1">
                     <img src="<?php echo $product_images[0]; ?>" class="card-img-top" alt="<?= $product_category ?>_img">
                     <div class="card-body">
                         <h5 class="card-title"><?= $product['name'] ?></h5>
                         <div class="special-container">
-                                <?php
-                                $ratings = $product['rating'];
-                                ?>
+                            <?php
+                            $ratings = $product['rating'];
+                            ?>
                             <div class="star-container" title="<?= $ratings ?>">
                                 <?php
                                 for ($i = 0; $i < 5; $i++) {
@@ -193,18 +193,20 @@ $interested_products = mysqli_fetch_all($result3, MYSQLI_ASSOC);
                                         $interested_users_status = true;
                                     }
                                 }
-                            //}
+                                //}
                                 if ($interested_users_status) {
                                 ?>
-                                    <i class="is-interested-image fa-solid fa-heart" product_id="<?php echo $product['id']?>"></i>
+                                    <i class="is-interested-image fa-solid fa-heart" product_id="<?php echo $product['id'] ?>"></i>
                                 <?php
                                 } else {
                                 ?>
-                                    <i class=" is-interested-image fa-regular fa-heart" product_id="<?=$product['id']?>"></i>
+                                    <i class=" is-interested-image fa-regular fa-heart" product_id="<?= $product['id'] ?>"></i>
                                 <?php
                                 }
                                 ?>
-                                <div class="interested-text"><?php echo $interested_users_count; ?> interested</div>
+                                <div class="interested-text">
+                                    <span class="interested-user-count"><?= $interested_users_count ?></span> interested
+                                </div>
                             </div>
                         </div>
                         <p class="card-text">₹<?= $product['price'] ?>/-</p>
@@ -238,6 +240,7 @@ $interested_products = mysqli_fetch_all($result3, MYSQLI_ASSOC);
     ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="js/products.js"></script>
 </body>
 
 </html>
