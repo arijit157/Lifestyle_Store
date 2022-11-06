@@ -1,25 +1,27 @@
 window.addEventListener("load", function(){
-    let isInterestedImages=document.getElementsByClassName("fa-heart");
+    var isInterestedImages=document.getElementsByClassName("fa-heart");
+    //let isInterestedImages=document.getElementsByClassName("is-interested-image");
     Array.from(isInterestedImages).forEach(function(el){
         el.addEventListener("click", function(event){
-            let httpRequest=new XMLHttpRequest();
+            var httpRequest=new XMLHttpRequest();
             httpRequest.addEventListener("load", toggleInterestedSuccess);   //on success
             httpRequest.addEventListener("error", on_error);   //on failure
-            let property_id=event.target.getAttribute("product_id");  //to access an attribute of the element
-            httpRequest.open("GET", "toggle_interested.php?property_id="+property_id);
+            var product_id=event.target.getAttribute("product_id");  //to access an attribute of the element
+            httpRequest.open("GET", "api/toggle_interested_product.php?product_id="+product_id);
             httpRequest.send();
             document.getElementById("loading").style.display="block";
         });
     });
 });
 
-let toggleInterestedSuccess=function(event){
+var toggleInterestedSuccess=function(event){
     document.getElementById("loading").style.display="none";
-    let response=JSON.parse(event.target.responseText);
-    if(response.is_logged_in && response.success){
-        let product_id=response.product_id;
-        let interested_image=document.querySelectorAll("product-id-"+product_id+" .is-interested-image")[0];
-        let interested_user_count=document.querySelectorAll("product-id-"+product_id+" .interested-user-count")[0];
+    var response=JSON.parse(event.target.responseText);
+    console.log(response);
+    if(response.success){
+        var product_id=response.product_id;
+        var interested_image=document.querySelectorAll("product-id-"+product_id+" .is-interested-image")[0];
+        var interested_user_count=document.querySelectorAll("product-id-"+product_id+" .interested-user-count")[0];
         if(response.is_interested){
             interested_image.classList.add("fa-solid");
             interested_image.classList.remove("fa-regular");
@@ -31,11 +33,14 @@ let toggleInterestedSuccess=function(event){
             interested_user_count.innerHTML=parseInt(interested_user_count.innerHTML)-1;
         }
     }
-    else if(!response.is_logged_in)
+    else if(!response.success && !response.is_logged_in)
     {
-        alert("Please login first!");
+        alert("Oops! something wrong happend");
     }
-    else{
-        alert("Oops! something wrong wrong happend");
-    }
+}
+
+var on_error=function(){
+    var loading_el=document.getElementById("loading");
+    loading_el.style.display="none";
+    alert("Oops! an unknown error occured, please try again after sometime");
 }

@@ -1,15 +1,27 @@
 <?php 
 session_start();
-include "includes/database_connection.php";
+
+include "../includes/database_connection.php";
+
 if(!isset($_SESSION['user_id']))
 {
-    $response=array("success"=>true, "is_logged_in"=>false);
+    $response=array("success"=>false, "is_logged_in"=>false);
     echo json_encode($response);
     return;
 }
 
 $user_id=$_SESSION['user_id'];
-$product_id=$_GET['product_id'];
+
+
+if(isset($_GET['product_id']))
+{
+    $product_id=$_GET['product_id'];
+}
+else
+{
+    echo "undefined";
+}
+
 
 $sql1="select * from interested_users_products where user_id='$user_id' and product_id='$product_id'";
 $result1=mysqli_query($conn, $sql1);
