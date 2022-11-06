@@ -20,8 +20,8 @@ var toggleInterestedSuccess=function(event){
     console.log(response);
     if(response.success){
         var product_id=response.product_id;
-        var interested_image=document.querySelectorAll("product-id-"+product_id+" .is-interested-image")[0];
-        var interested_user_count=document.querySelectorAll("product-id-"+product_id+" .interested-user-count")[0];
+        var interested_image=document.querySelectorAll(".product-id-"+product_id+" .is-interested-image")[0];
+        var interested_user_count=document.querySelectorAll(".product-id-"+product_id+" .interested-user-count")[0];
         if(response.is_interested){
             interested_image.classList.add("fa-solid");
             interested_image.classList.remove("fa-regular");
@@ -37,10 +37,4 @@ var toggleInterestedSuccess=function(event){
     {
         alert("Oops! something wrong happend");
     }
-}
-
-var on_error=function(){
-    var loading_el=document.getElementById("loading");
-    loading_el.style.display="none";
-    alert("Oops! an unknown error occured, please try again after sometime");
 }

@@ -188,9 +188,9 @@ $interested_products = mysqli_fetch_all($result3, MYSQLI_ASSOC);
                                 foreach ($interested_products as $interested_product) {
                                     if ($interested_product['product_id'] == $product['id']) {
                                         $interested_users_count++;
-                                    }
-                                    if ($interested_product['user_id'] == $user_id) {
-                                        $interested_users_status = true;
+                                        if ($interested_product['user_id'] == $user_id) {
+                                            $interested_users_status = true;
+                                        }
                                     }
                                 }
                                 //}
